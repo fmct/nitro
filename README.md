@@ -33,7 +33,7 @@ Make sure you have the following installed:
 ## Project Structure
 
 ```
-ntrioe
+nitro
 ├── wizard-world/
       ├── pom.xml
       ├── src/
