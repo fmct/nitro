@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @CommandLine.Command(name = "elixir-finder", mixinStandardHelpOptions = true)
 public class ElixirFinderCommand implements Runnable {
 
-    private static final Logger LOGGER =  Logger.getLogger(ElixirFinderCommand.class);
+    private static final Logger LOGGER = Logger.getLogger(ElixirFinderCommand.class);
 
     @CommandLine.Option(names = {"-i", "--ingredients"}, description = "Comma-separated list of ingredients", split = ",")
     List<String> ingredientsOption;
@@ -38,7 +38,7 @@ public class ElixirFinderCommand implements Runnable {
     }
 
     void runLoop(Supplier<String> inputSupplier) {
-        while(true) {
+        while (true) {
             List<String> ingredients;
             if (ingredientsOption != null && !ingredientsOption.isEmpty()) {
                 ingredients = normalize(ingredientsOption);
@@ -65,7 +65,7 @@ public class ElixirFinderCommand implements Runnable {
                 for (Elixir elixir : matchableElixirs) {
                     printElixirInformation(elixir);
                 }
-            } catch(Exception e) {
+            } catch (Exception e) {
                 LOGGER.info("Not possible to retrieve the elixirs! Please try again later.\n");
             }
         }
@@ -77,7 +77,7 @@ public class ElixirFinderCommand implements Runnable {
         String ingredients = elixir.ingredients().stream().map(Ingredient::name).collect(Collectors.joining(", "));
         LOGGER.info(format.formatted("Name:", elixir.name()));
         LOGGER.info(format.formatted("Effect:", effect));
-        LOGGER.info(format.formatted( "Ingredients:", ingredients));
+        LOGGER.info(format.formatted("Ingredients:", ingredients));
         LOGGER.info(String.format("%0" + 150 + "d", 0).replace("0", "-"));
     }
 
