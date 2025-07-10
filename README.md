@@ -10,7 +10,7 @@ A command-line application built with Quarkus and Picocli that fetches elixir da
 * One-shot mode with `--ingredients` argument
 * Native executable via GraalVM
 * Docker image for containerized native deployment
-* Formatted ASCII output with rows: Name, Effect, Ingredients
+* Formatted ASCII output with rows: Elixir's Name, Effect and Ingredients
 
 ---
 
@@ -92,6 +92,15 @@ Quarkus supports native builds using Docker, so you do not need to install Graal
 ```
 mvn clean package -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
 ```
+
+> **Windows Users:**
+> - To build natively on Windows, you may need to install the [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (C++ workload).
+> - Or use container mode (Docker) to avoid installing a native toolchain:
+>   ```bash
+>   .\mvnw clean package -Pnative \
+>     -Dquarkus.native.container-build=true \
+>     -Dquarkus.container-image.build=true
+>   ```
 
 #### Run native executable
 * Guarantee that the below file is indeed an executable, if not make it (i.e `chmod +x <file-name>`)
